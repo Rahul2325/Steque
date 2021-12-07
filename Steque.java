@@ -32,6 +32,7 @@ import java.util.NoSuchElementException;
 public class Steque<Item> implements Iterable<Item> {
     private Item[] stack;
     private int size;
+    private static int capacity = 10;
     // private int rear;
     // private int front;
     
@@ -134,3 +135,23 @@ public class Steque<Item> implements Iterable<Item> {
             return item;
     }
 }
+public static void main(String[] args){
+    Steque<Integer> arr = new Steque<Integer>();
+    arr.enqueue(23);
+    arr.enqueue(47);
+    arr.enqueue(30);
+    arr.push(3);
+    arr.push(1);
+    arr.push(14);
+    arr.enqueue(34);
+    System.out.println("empty:"+arr.isEmpty());
+    System.out.println("size:"+arr.size());
+    Iterator<Integer> ar = arr.iterator();
+    System.out.println("steque elements");
+    while(ar.hasNext())
+    System.out.println(ar.next());
+    System.out.println("popped elements");
+   while(!arr.isEmpty()){
+       System.out.println(arr.pop());
+   }
+}}
