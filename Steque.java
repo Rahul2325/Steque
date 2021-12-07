@@ -82,7 +82,11 @@ public class Steque<Item> implements Iterable<Item> {
      * @return Item object from steque.
      */
     public Item pop() {
-
+        if(isEmpty()) throw new NoSuchElementException();
+        Item item = stack[size-1];
+        stack[size-1] = null;
+        size--;
+        return item;
     }
     
     /**
@@ -90,11 +94,7 @@ public class Steque<Item> implements Iterable<Item> {
      * @return true if steque is empty, false otherwise.
      */
     public boolean isEmpty() {
-        if(isEmpty()) throw new NoSuchElementException();
-        Item item = stack[size-1];
-        stack[size-1] = null;
-        size--;
-        return item;
+        
     }
     
     /**
