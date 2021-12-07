@@ -30,13 +30,19 @@ import java.util.NoSuchElementException;
  *
  */
 public class Steque<Item> implements Iterable<Item> {
-
+    private Node first, last;
+    private class Node{
+        Item item;
+        Node next;
+    }
+    
 
     /**
      * constructs a steque object.
      */
     public Steque() {
-
+        first = last = null;
+        
     }
     
     
@@ -44,17 +50,27 @@ public class Steque<Item> implements Iterable<Item> {
      * inserts an item in the steque in queue fashion.
      * @param item Item to be inserted.
      */
+    // time complexity: O(1) ,space complexity: O(n)
     public void enqueue(Item item) {
-
-    }
-    
-    
+        if(item == null) throw new IllegalArgumentException();
+        Node oldlast = last;
+        last = new Node();
+        last.item = item;
+        last.next = null;
+        if(first == null) first=last;
+        else oldlast.next = last;
+    } 
     /**
      * inserts an item in the steque in stack fashion.
      * @param item Item to be inserted.
      */
     public void push(Item item) {
-
+        if(item == null) throw new IllegalArgumentException();
+        Node oldfirst = first;
+        first = new Node();
+        first.item = item;
+        first.next = oldfirst;
+        if(last == null) last=first;
     }
     
     /**
