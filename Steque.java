@@ -32,6 +32,7 @@ import java.util.NoSuchElementException;
 public class Steque<Item> implements Iterable<Item> {
     private Item[] stack;
     private int size;
+    private static int capacity = 10;
     // private int rear;
     // private int front;
     
