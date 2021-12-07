@@ -111,6 +111,26 @@ public class Steque<Item> implements Iterable<Item> {
      * 
      */
     public Iterator<Item> iterator() {
+        return new ArrayIterator();
+    }
+    public class ArrayIterator implements Iterator<Item> {
+        public int i = size-1;
 
+     
+        public boolean hasNext() {
+            return i >= 0;
+        }
+
+      
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
+        
+        public Item next() {
+            if(!hasNext()) throw new NoSuchElementException();
+            Item item = stack[i];
+            i--;
+            return item;
     }
 }
