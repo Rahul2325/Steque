@@ -30,9 +30,9 @@ import java.util.NoSuchElementException;
  *
  */
 public class Steque<Item> implements Iterable<Item> {
-    private Item[] stack;
-    private int size;
-    private static int capacity = 10;
+    private Item[] stack;//initializing array
+    private int size;//initializing size
+    private static int capacity = 10; //initializing capacity variable
     // private int rear;
     // private int front;
     
@@ -41,13 +41,13 @@ public class Steque<Item> implements Iterable<Item> {
      * constructs a steque object.
      */
     public Steque() {
-        stack = (Item[]) new Object[capacity];
+        stack = (Item[]) new Object[capacity]; //creating object and typecasting into item datatype
         size = 0;
         // rear = 0;
     }
     private void resize() {
-        int newCapacity = 2*stack.length;
-        Item[] newstack = (Item[]) new Object[newCapacity];
+        int newCapacity = 2*stack.length;// when the stack is full we call resize func
+        Item[] newstack = (Item[]) new Object[newCapacity];// creating array
         for(int i=0; i<stack.length; i++) {
             newstack[i] = stack[i];
         }
@@ -105,7 +105,14 @@ public class Steque<Item> implements Iterable<Item> {
     public int size() {
         return size;
     }
-    
+
+    public Item peek() {
+		if(size==0) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		Item result = stack[size-1];
+		return result;
+    }
     /**
      * returns an iterator over the elements 
      * stored in steque.
@@ -144,14 +151,17 @@ public static void main(String[] args){
     arr.push(1);
     arr.push(14);
     arr.enqueue(34);
+    arr.peek();
+    System.out.println("This is peek " +arr.peek());
+    System.out.println("This is pop " +arr.pop());
     System.out.println("empty:"+arr.isEmpty());
     System.out.println("size:"+arr.size());
     Iterator<Integer> ar = arr.iterator();
     System.out.println("steque elements");
-    while(ar.hasNext())
-    System.out.println(ar.next());
-    System.out.println("popped elements");
-   while(!arr.isEmpty()){
-       System.out.println(arr.pop());
-   }
+    //while(ar.hasNext())
+    // System.out.println(ar.next());
+    // System.out.println("popped elements");
+   //while(!arr.isEmpty()){
+    //    System.out.println(arr.pop());
+//    }
 }}
